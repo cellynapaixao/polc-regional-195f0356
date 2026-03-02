@@ -26,7 +26,7 @@ const HeroSection = () => {
           <div className="inline-flex items-center gap-2 bg-secondary/15 border border-secondary/30 rounded-full px-4 py-1.5 mb-8 animate-fade-in">
             <span className="w-2 h-2 rounded-full bg-secondary" />
             <span className="text-secondary text-xs font-medium uppercase tracking-widest">
-              Maranhão · Pará · Piauí
+                Maranhão · Mato Grosso · Pará · Paraíba · Piauí       
             </span>
           </div>
 
