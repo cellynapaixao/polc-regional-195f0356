@@ -56,7 +56,7 @@ const Navbar = () => {
           ))}
           <button
             onClick={() => handleClick("#contato")}
-            className="bg-secondary text-secondary-foreground px-5 py-2 rounded text-sm font-semibold hover:bg-gold-dark transition-colors"
+            className="bg-accent text-accent-foreground px-5 py-2 rounded text-sm font-semibold hover:bg-accent/80 transition-colors"
           >
             Solicitar Proposta
           </button>
