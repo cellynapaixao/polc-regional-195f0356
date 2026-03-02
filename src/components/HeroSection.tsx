@@ -35,7 +35,7 @@ const HeroSection = () => {
           </h1>
 
           <p className="text-lg md:text-xl text-primary-foreground/70 leading-relaxed mb-10 max-w-2xl animate-fade-up" style={{ animationDelay: "0.15s" }}>
-            Atuação estratégica em obras públicas, corporativas e industriais de médio e grande porte — com planejamento estruturado, controle rigoroso e conformidade normativa.
+            Atuação estratégica em obras públicas, corporativas e industriais de médio e grande porte.
           </p>
 
           {/* CTAs */}
