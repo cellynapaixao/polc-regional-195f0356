@@ -8,7 +8,20 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-const basename = import.meta.env.PROD ? "/polc-regional" : "/";
+const basename = (() => {
+  const baseUrl = import.meta.env.BASE_URL;
+
+  if (baseUrl && baseUrl !== "/") {
+    return baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl;
+  }
+
+  if (import.meta.env.PROD && window.location.hostname.endsWith("github.io")) {
+    const [repoSegment] = window.location.pathname.split("/").filter(Boolean);
+    return repoSegment ? `/${repoSegment}` : "/";
+  }
+
+  return "/";
+})();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
