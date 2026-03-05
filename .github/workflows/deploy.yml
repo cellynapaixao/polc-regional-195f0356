@@ -1,7 +1,6 @@
 name: Build and Deploy to HostGator
-
 on:
-  workflow_dispatch:  # Allows manual runs
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -14,11 +13,24 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4.3.0
 
-    # Add your build/setup steps here if needed, for example:
-    # - name: Install dependencies
-    #   run: npm install
-    # - name: Build project
-    #   run: npm run build
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'pnpm'
+
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+
+    - name: Build Next.js project
+      run: pnpm build
+      env:
+        NODE_ENV: production
 
     - name: Deploy to HostGator via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.0
@@ -26,5 +38,8 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./
+        local-dir: ./out/
         server-dir: /public_html/
+        state-name: .ftp-deploy-sync-state.json
+        state-dir: ./
+        dry-run: false
