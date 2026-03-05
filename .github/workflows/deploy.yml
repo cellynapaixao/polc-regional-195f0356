@@ -1,3 +1,7 @@
+name: Build and Deploy to HostGator
+
+on:
+  workflow_dispatch:  # Allows manual runs
   push:
     branches:
       - main
